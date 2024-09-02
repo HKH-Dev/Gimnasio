@@ -1,11 +1,9 @@
 package com.uniquindio.GYM.model;
 
-import com.uniquindio.GYM.model.person.Cliente;
-
 import java.util.ArrayList;
 
 public class GeneradorReportes {
-    public void clasePopular(ArrayList<Clase> listaClases) {
+    public Clase clasePopular(ArrayList<Clase> listaClases) {
         int max = 0;
         int index = 0;
         for (int i = 0; i < listaClases.size(); i++) {
@@ -15,6 +13,7 @@ public class GeneradorReportes {
             }
         }
         System.out.println("La clase más popular es: " + listaClases.get(index).getNombre());
+        return listaClases.get(index);
     }
 
     public ArrayList<RegistroEntrenamiento> toptresUsuariosMasActivos(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
@@ -51,7 +50,7 @@ public class GeneradorReportes {
     }
 
 
-    public void ejercicioMasPracticado(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
+    public String ejercicioMasPracticado(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
         ArrayList<TipoEntrenamiento> tiposEntrenamiento = new ArrayList<>();
         ArrayList<Integer> tiemposTotales = new ArrayList<>();
 
@@ -79,10 +78,10 @@ public class GeneradorReportes {
         }
 
         if (ejercicioMasPracticado != null) {
-            System.out.println("El tipo de ejercicio más practicado es: " + ejercicioMasPracticado
-                    + " con un tiempo registrado de " + maxTiempo + " minutos.");
+            return "El tipo de ejercicio más practicado es: " + ejercicioMasPracticado
+                    + " con un tiempo registrado de " + maxTiempo + " minutos.";
         } else {
-            System.out.println("No hay datos de ejercicios registrados.");
+            return "No hay datos de ejercicios registrados.";
         }
     }
 }
